@@ -2,12 +2,12 @@
 public class AirAverager {
 	private int count;
 	private double sum;
-	private int crashes;
+	//private int crashes;
 	
 	public AirAverager() {
 		count = 0;
 		sum = 0;
-		crashes = 0;
+		//crashes = 0;
 	}
 	
 	public void addNumber(double value) {
@@ -27,12 +27,12 @@ public class AirAverager {
 		return count;
 	}
 	
-	public void noFuel() {
-		crashes++;
-	}
-	
-	public int crashes() {
-		return crashes;
-	}
+//	public void noFuel() {
+//		crashes++;
+//	}
+//	
+//	public int crashes() {
+//		return crashes;
+//	}
 }
 

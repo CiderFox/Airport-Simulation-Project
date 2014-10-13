@@ -40,8 +40,7 @@ public class GUI extends JFrame {
 	private JTextArea jtaDisplay;
 	
 	private JComboBox combo1 = new JComboBox(new Integer[] {1,2});
-//
-//	private JComboBox combo2 = new JComboBox(new Double[] {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9});
+
 	
 	private Runway runway1; //= new Runway(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()));
 	private Runway runway2; //= new Runway(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()));
@@ -148,12 +147,22 @@ public class GUI extends JFrame {
 		
 		submitButton = new JButton("Simulate");
 		submitButton.addMouseListener(new MouseAdapter() {
-			@SuppressWarnings("static-access")				//<--------------------------------
+			@SuppressWarnings("static-access")				
 			public void mouseClicked(MouseEvent e) {
+				if (combo1.getSelectedItem().equals(1)) {
 				jtaDisplay.append(runway1.runwaySimulate(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()), 
 						Integer.parseInt(MaxFuelTextField.getText()), Double.parseDouble(DepartProbTextField.getText()), 
 						Double.parseDouble(LandArriveProbabilityTextField.getText()), Integer.parseInt(SimTimeTextField.getText())));
-	
+				}else{
+					if(combo1.getSelectedItem().equals(2)) {
+						jtaDisplay.append(runway1.runwaySimulate(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()), 
+								Integer.parseInt(MaxFuelTextField.getText()), Double.parseDouble(DepartProbTextField.getText()), 
+								Double.parseDouble(LandArriveProbabilityTextField.getText()), Integer.parseInt(SimTimeTextField.getText())));
+						jtaDisplay.append(runway2.runwaySimulate(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()), 
+								Integer.parseInt(MaxFuelTextField.getText()), Double.parseDouble(DepartProbTextField.getText()), 
+								Double.parseDouble(LandArriveProbabilityTextField.getText()), Integer.parseInt(SimTimeTextField.getText())));
+					}
+				}
 			}
 		});
 		submitButton.setFont(defaultFont);
