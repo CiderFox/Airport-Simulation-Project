@@ -27,6 +27,8 @@ public class AirAverager {
 		return count;
 	}
 	
+
+	
 //	public void noFuel() {
 //		crashes++;
 //	}

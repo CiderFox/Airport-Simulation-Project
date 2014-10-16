@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -28,8 +27,6 @@ public class GUI extends JFrame {
 	private JTextField DepartTimeTextField = new JTextField();
 	private JTextField DepartProbTextField = new JTextField();
 	private JTextField SimTimeTextField = new JTextField();
-	//private JTextField SevenTextField = new JTextField();
-	//private JTextField EightTextField = new JTextField();
 	
 
 	private	JButton submitButton;
@@ -39,6 +36,7 @@ public class GUI extends JFrame {
 
 	private JTextArea jtaDisplay;
 	
+
 	private JComboBox combo1 = new JComboBox(new Integer[] {1,2});
 
 	
@@ -148,21 +146,21 @@ public class GUI extends JFrame {
 		submitButton = new JButton("Simulate");
 		submitButton.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("static-access")				
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) {				
 				if (combo1.getSelectedItem().equals(1)) {
-				jtaDisplay.append(runway1.runwaySimulate(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()), 
+				jtaDisplay.setText(runway1.runwaySimulate(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()), 
 						Integer.parseInt(MaxFuelTextField.getText()), Double.parseDouble(DepartProbTextField.getText()), 
-						Double.parseDouble(LandArriveProbabilityTextField.getText()), Integer.parseInt(SimTimeTextField.getText())));
+						Double.parseDouble(LandArriveProbabilityTextField.getText()), Integer.parseInt(SimTimeTextField.getText()), 1,
+						Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText())));
 				}else{
 					if(combo1.getSelectedItem().equals(2)) {
-						jtaDisplay.append(runway1.runwaySimulate(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()), 
+						jtaDisplay.setText(runway2.runwaySimulate(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()), 
 								Integer.parseInt(MaxFuelTextField.getText()), Double.parseDouble(DepartProbTextField.getText()), 
-								Double.parseDouble(LandArriveProbabilityTextField.getText()), Integer.parseInt(SimTimeTextField.getText())));
-						jtaDisplay.append(runway2.runwaySimulate(Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText()), 
-								Integer.parseInt(MaxFuelTextField.getText()), Double.parseDouble(DepartProbTextField.getText()), 
-								Double.parseDouble(LandArriveProbabilityTextField.getText()), Integer.parseInt(SimTimeTextField.getText())));
+								Double.parseDouble(LandArriveProbabilityTextField.getText()), Integer.parseInt(SimTimeTextField.getText()), 2,
+								Integer.parseInt(LandingTimeTextField.getText()), Integer.parseInt(DepartTimeTextField.getText())));
 					}
 				}
+				
 			}
 		});
 		submitButton.setFont(defaultFont);
@@ -191,10 +189,9 @@ public class GUI extends JFrame {
 		scrollPane.setBounds(10, 300, 574, 203);
 		contentPane.add(scrollPane);
 
-	}	
-	
-		
-		
+
+	}
+
 	public static void main(String[] args) {
 		GUI frame = new GUI();
 		frame.pack();
@@ -205,4 +202,6 @@ public class GUI extends JFrame {
 		frame.setVisible(true);
 	}
 }
+
+
 
